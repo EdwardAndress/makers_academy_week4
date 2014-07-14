@@ -21,3 +21,4 @@ board = { A1: :des, A2: :des, B1: ' ', B2: ' '}
 des.destroyer
 
 destroyer = 
+
