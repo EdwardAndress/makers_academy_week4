@@ -4,7 +4,9 @@ describe Grid do
 
 	let(:eddys_grid) 	{ Grid.new(cell) }
 	let(:cell) {double :cell, hit_the_boat: :nil, content: "Destroyer"}
+	
 	context 'create grid' do
+
 		it 'is an Array' do
 			expect(eddys_grid.grid.is_a?(Array)).to be true
 		end
@@ -29,6 +31,7 @@ describe Grid do
 				expect(cell.class).to eq Cell
 			end
 		end
+
 	end
 
 	context 'transfer player inputs' do 
@@ -45,6 +48,16 @@ describe Grid do
 
 	end
 
+	context 'game parameters' do
 
+		it 'will not let a user place a boat outside of the grid' do
+			expect{eddys_grid.place_boat(19, 64, "Destroyer")}.to raise_error(RuntimeError)
+		end
+
+		it 'will not allow a player to place a shot outside of the grid' do
+			expect{eddys_grid.shot(11,11)}.to raise_error(RuntimeError)
+		end
+
+	end
 
 end
