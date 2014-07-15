@@ -2,10 +2,11 @@ require 'grid'
 
 describe Grid do
 
-	let(:eddys_grid) 	{ Grid.new(cell) }
+	let(:eddys_grid) 		{ Grid.new(cell) }
+	let(:deployment_grid)	{Grid.new}
 	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
 	let(:cell2) {double :cell2, check_for_hit!: :nil}
-	let(:submarine) {double :submarine}
+	let(:submarine) {double :submarine, size: 4}
 	
 	context 'create grid' do
 
@@ -46,7 +47,7 @@ describe Grid do
 
 		it 'can be used to place boats on the grid' do
 			eddys_grid.grid[2][2]=cell2
-			expect(cell2).to receive(:content).with("Destroyer")
+			expect(cell2).to receive(:content=).with("Destroyer")
 			eddys_grid.place_boat(2, 2, "Destroyer")
 		end
 
@@ -69,8 +70,8 @@ describe Grid do
 		end
 
 		it 'will automate horizontal placement of a boat' do
-			eddys.grid.deploy(1, 1, submarine)
-			expect(eddys_grid.grid[1][1]).to eq submarine
+			deployment_grid.deploy(1, 1, submarine)
+			expect(deployment_grid.grid[1][1].content).to eq submarine
 		end
 	end
 

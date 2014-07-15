@@ -1,15 +1,16 @@
-# require './lib/cell'
-
-class Cell
-end
+require './lib/cell'
 
 class Grid
 
-	def initialize(content=Cell.new)
-		@grid = []
-		10.times do
-			@grid << ([content] * 10)
-		end
+	def initialize
+		# @grid ||= []
+		# 10.times do
+		# 	@grid << ([Cell.new] * 10)
+		# end
+
+		# This (and the old version)
+		# puts the same new cell in many locations
+		# the exact same cell object!
 	end
 
 	def grid
@@ -25,16 +26,16 @@ class Grid
 
 		counter = boat.size
 
-		until counter == 0
-			grid.place_boat(x.+(counter), y, boat)
-			count -= 1
+		while counter > 0 do
+			self.place_boat(x+counter, y, boat)
+			counter -= 1
 		end
 	end
 
 
 	def place_boat(x, y, boat)
 		off_grid(x, y)
-		grid[x][y].content(boat)
+		grid[x][y].content=(boat)
 	end
 
 	def off_grid(x, y)
