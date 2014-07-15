@@ -6,7 +6,10 @@ end
 class Grid
 
 	def initialize(content=Cell.new)
-		@grid = Array.new(10, Array.new(10){  content })
+		@grid = []
+		10.times do
+			@grid << ([content] * 10)
+		end
 	end
 
 	def grid
@@ -15,7 +18,7 @@ class Grid
 
 	def shot(x, y)
 		off_grid(x ,y)
-		grid[x][y].hit_the_boat
+		grid[x][y].check_for_hit!
 	end
 
 	def place_boat(x, y, boat)

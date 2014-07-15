@@ -3,7 +3,8 @@ require 'grid'
 describe Grid do
 
 	let(:eddys_grid) 	{ Grid.new(cell) }
-	let(:cell) {double :cell, hit_the_boat: :nil, content: "Destroyer"}
+	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
+	let(:cell2) {double :cell2, check_for_hit!: :nil}
 	
 	context 'create grid' do
 
@@ -37,13 +38,15 @@ describe Grid do
 	context 'transfer player inputs' do 
 		
 		it 'takes a shot' do
-			expect(eddys_grid.grid[1][1]).to receive(:hit_the_boat)
-			eddys_grid.shot(1, 1)
+			eddys_grid.grid[2][2]=cell2
+			expect(cell2).to receive(:check_for_hit!)
+			eddys_grid.shot(2, 2)
 		end
 
 		it 'can be used to place boats on the grid' do
-			expect(eddys_grid.grid[1][1]).to receive(:content).with("Destroyer")
-			eddys_grid.place_boat(1, 1, "Destroyer")
+			eddys_grid.grid[2][2]=cell2
+			expect(cell2).to receive(:content).with("Destroyer")
+			eddys_grid.place_boat(2, 2, "Destroyer")
 		end
 
 	end
@@ -58,6 +61,10 @@ describe Grid do
 			expect{eddys_grid.shot(11,11)}.to raise_error(RuntimeError)
 		end
 
+		xit 'will translate a user input into the array values' do
+			expect(eddys_grid.grid[1][3]).to receive(:check_for_hit!)
+			eddys_grid.shot(2,4)
+		end
 	end
 
 end
