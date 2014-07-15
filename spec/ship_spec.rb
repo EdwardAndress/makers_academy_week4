@@ -1,8 +1,9 @@
 require 'ship'
 
 describe 'Ship' do
-	let(:ship)  { Ship.new          }
+	let(:ship)      { Ship.new      }
 	let(:submarine) { Submarine.new }
+
 	it 'can be hit' do
 		ship = Ship.new
 		ship.hit!
@@ -25,14 +26,16 @@ describe 'Ship' do
 	end
 
 	it 'can be sunk' do
-		4.times { submarine.hit! }
+		4.times {submarine.hit!}
 		expect(submarine).to be_sunk
 	end
 
 	context 'Subclasses' do
+
 		it 'can be a submarine' do
 			expect(submarine.size).to eq 4
 		end
+
 	end
 
 end
