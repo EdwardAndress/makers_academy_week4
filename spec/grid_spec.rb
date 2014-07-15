@@ -5,6 +5,7 @@ describe Grid do
 	let(:eddys_grid) 	{ Grid.new(cell) }
 	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
 	let(:cell2) {double :cell2, check_for_hit!: :nil}
+	let(:submarine) {double :submarine}
 	
 	context 'create grid' do
 
@@ -65,6 +66,11 @@ describe Grid do
 			eddys_grid.grid[1][3]=cell2
 			expect(cell2).to receive(:check_for_hit!)
 			eddys_grid.shot(2,4)
+		end
+
+		it 'will automate horizontal placement of a boat' do
+			eddys.grid.deploy(1, 1, submarine)
+			expect(eddys_grid.grid[1][1]).to eq submarine
 		end
 	end
 

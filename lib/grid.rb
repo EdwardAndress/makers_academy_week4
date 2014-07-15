@@ -21,6 +21,17 @@ class Grid
 		grid[x-1][y-1].check_for_hit!
 	end
 
+	def deploy(x, y, boat)
+
+		counter = boat.size
+
+		until counter == 0
+			grid.place_boat(x.+(counter), y, boat)
+			count -= 1
+		end
+	end
+
+
 	def place_boat(x, y, boat)
 		off_grid(x, y)
 		grid[x][y].content(boat)
