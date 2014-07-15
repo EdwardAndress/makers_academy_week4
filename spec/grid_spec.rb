@@ -40,7 +40,7 @@ describe Grid do
 		it 'takes a shot' do
 			eddys_grid.grid[2][2]=cell2
 			expect(cell2).to receive(:check_for_hit!)
-			eddys_grid.shot(2, 2)
+			eddys_grid.shot(3, 3)
 		end
 
 		it 'can be used to place boats on the grid' do
