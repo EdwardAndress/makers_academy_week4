@@ -1,13 +1,15 @@
+# require './lib/cell'
+
+class Cell;end
+
 class Grid
 
-	def view(coordinates)
-		" "
+	def initialize
+		@grid = Array.new(10, Array.new(10){  Cell.new })
 	end
 
-def create_board
-	board ={}
-	("A".."J").to_a.each{|row| (1..10).to_a.each{|column| board["#{row}#{column}"] = cell}}
-	board
-end
+	def grid
+		@grid
+	end
 
 end
