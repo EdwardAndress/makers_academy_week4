@@ -6,9 +6,8 @@ class Grid
 
 def create_board
 	board ={}
-	("A".."J").to_a.each{|row| (1..10).to_a.each{|column| board["#{row}#{column}"] = " "}}
+	("A".."J").to_a.each{|row| (1..10).to_a.each{|column| board["#{row}#{column}"] = cell}}
 	board
-
 end
 
 end
