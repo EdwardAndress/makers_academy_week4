@@ -17,8 +17,8 @@ class Grid
 	end
 
 	def shot(x, y)
-		off_grid(x ,y)
-		grid[x][y].check_for_hit!
+		off_grid(x-1 ,y-1)
+		grid[x-1][y-1].check_for_hit!
 	end
 
 	def place_boat(x, y, boat)
@@ -27,7 +27,7 @@ class Grid
 	end
 
 	def off_grid(x, y)
-		raise "That sqaure is off the grid" if x > 9 || y > 9
+		raise "That square is off the grid" if x > 9 || y > 9
 	end
 
 end

@@ -61,8 +61,9 @@ describe Grid do
 			expect{eddys_grid.shot(11,11)}.to raise_error(RuntimeError)
 		end
 
-		xit 'will translate a user input into the array values' do
-			expect(eddys_grid.grid[1][3]).to receive(:check_for_hit!)
+		it 'will translate a user input into the array indices' do
+			eddys_grid.grid[1][3]=cell2
+			expect(cell2).to receive(:check_for_hit!)
 			eddys_grid.shot(2,4)
 		end
 	end
