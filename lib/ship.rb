@@ -1,4 +1,4 @@
-class Ship
+class Sip
 
 	attr_accessor :size
 	 
