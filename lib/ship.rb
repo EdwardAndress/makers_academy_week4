@@ -1,8 +1,9 @@
-class Sip
+class Ship
 
 	attr_accessor :size
 	 
-	def initialize
+	def initialize(size = nil)
+		@size = size
 		@hits_count = 0
 	end
 
@@ -22,8 +23,8 @@ end
 
 class Submarine < Ship
 
-	def initialize
-		@size = 4
-		@hits_count = 0
+	def initialize(size = 4)
+		super
 	end
+
 end
