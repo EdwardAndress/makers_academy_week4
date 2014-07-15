@@ -2,8 +2,8 @@ require 'grid'
 
 describe Grid do
 
-	let(:eddys_grid) 	{ Grid.new }
-
+	let(:eddys_grid) 	{ Grid.new(cell) }
+	let(:cell) {double :cell, hit_the_boat: :nil, content: "Destroyer"}
 	context 'create grid' do
 		it 'is an Array' do
 			expect(eddys_grid.grid.is_a?(Array)).to be true
@@ -24,17 +24,27 @@ describe Grid do
 		end
 
 		it 'has 100 cell objects' do
-			eddys_grid.grid.flatten.each do |cell|
+			nicolas_grid = Grid.new
+			nicolas_grid.grid.flatten.each do |cell|
 				expect(cell.class).to eq Cell
 			end
 		end
 	end
 
-	# context 'transfer player inputs' do 
-	# 	it 'takes a shot' do
-	# 		eddys_grid.shot(1, 1)
-	# 		expect(eddys_grid.grid[1][1]).to recieve(:hit_the_boat)
-	# 	end
-	# end
+	context 'transfer player inputs' do 
+		
+		it 'takes a shot' do
+			expect(eddys_grid.grid[1][1]).to receive(:hit_the_boat)
+			eddys_grid.shot(1, 1)
+		end
+
+		it 'can be used to place boats on the grid' do
+			expect(eddys_grid.grid[1][1]).to receive(:content).with("Destroyer")
+			eddys_grid.place_boat(1, 1, "Destroyer")
+		end
+
+	end
+
+
 
 end
