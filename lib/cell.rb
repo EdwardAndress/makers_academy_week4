@@ -1,24 +1,20 @@
-# require './lib/ship'
+#require './lib/ship'
 
 class Cell
 
-	def initialize(content = :water)
-		@content = content
-	end
+	attr_accessor :content
 
-	def content
-		@content
+	def initialize(status = :water)
+		@content = status
 	end
 
 	def water?
-		@content == :water
+		content == :water
 	end
 
-	def hit_the_boat
+	def check_for_hit!
+		return if water?
 		content.hit!
 	end
-
-
-
 
 end

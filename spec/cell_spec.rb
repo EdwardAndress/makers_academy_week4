@@ -1,41 +1,47 @@
 require 'cell'
-require 'ship'
+
 
 describe do
-	let(:cell) { Cell.new }
-	let(:ship) { double :ship, size: 4, hit!: 2, hits_count: 0 }
-	let(:cell_ship) { Cell.new(ship) }
-	let(:submarine) { Cell.new(Submarine)}
+	let(:cell)             { Cell.new }
+	let(:ship)             { double :ship, size: 4, hit!: 2, hits_count: 0 }
+	let(:submarine)        { Cell.new(Submarine)}
 
 	it 'can have a content when created' do
-		expect(cell_ship).to eq ship
+		a1 = Cell.new
+		sub = double :submarine
+		a1.content = sub
+		expect(a1.content).to eq sub
 	end
 
-	it' it can be empty' do
-		expect(cell).to be_empty
+	it 'water by default' do
+		expect(cell).to be_water
 	end
 
-	it 'empty when it is initialized' do
-		expect(cell.content).to eq nil
+	it 'can be created with a boat' do
+		ship  = double :ship
+		a1 = Cell.new(ship)
+		expect(a1.water?).to be false
 	end
 
-	it ' can be created with a boat' do
-		grid = double :grid
-		A1 = Cell.new(ship = :boat)
-		expect(A1.water?).to be false
-	end
+	it 'triggers the hit method on the ship' do
+		ship  = double :ship
+		a1 = Cell.new(ship)
 
-	it 'a cell can be hit and target a boat' do
-		submarine= double :submarine
-		cell_ship =Cell.new(submarine)
-		expect(submarine).to receive(:hit!)
-		cell_ship.hit_the_boat
+		expect(ship).to receive :hit!
+		a1.check_for_hit!
 	end
+ 
+	# it 'a cell can be hit and target a boat' do
+	# 	sub = double :ship, size: 4, hit!: 1
+	# 	a2 = Cell.new(sub)
+	# 	a2.hit_the_boat
+	# 	expect(hits_count).to eq 1
+	# end
 
-	it 'knows when the ship is sunk ' do
-		4.times { ship.hit! }
-		expect(cell.sunk_ship).to 
-	end
+	# xit 'knows when the ship is sunk ' do
+	# 	4.times { ship.hit! }
+	# 	expect(cell.sunk_ship).to 
+	# end
 
 end
 
