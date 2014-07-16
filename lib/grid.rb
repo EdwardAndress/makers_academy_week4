@@ -21,7 +21,7 @@ class Grid
 		grid[x-1][y-1].check_for_hit!
 	end
 
-	def deploy(x, y, boat)
+	def deploy(x, y, boat, direction)
 
 		counter = boat.size
 
@@ -29,6 +29,7 @@ class Grid
 			grid.place_boat(x.+(counter), y, boat)
 			count -= 1
 		end
+
 	end
 
 
