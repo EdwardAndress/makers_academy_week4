@@ -5,8 +5,11 @@ describe Grid do
 	let(:eddys_grid) 		{ Grid.new }
 	let(:deployment_grid)	{Grid.new}
 	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
-	let(:cell2) {double :cell2, check_for_hit!: :nil}
-	let(:submarine) {double :submarine, size: 4}
+	let(:cell2) {double :cell2, check_for_hit!: :nil, content: "submarine"}
+	let(:cell3) {double :cell3, check_for_hit!: :nil, content: "submarine"}
+	let(:cell4) {double :cell4, check_for_hit!: :nil, content: "submarine"}
+
+	let(:submarine) {double :submarine, size: 3}
 	
 	context 'create grid' do
 
@@ -70,8 +73,15 @@ describe Grid do
 		end
 
 		it 'will automate horizontal placement of a boat' do
-			deployment_grid.deploy(1, 1, submarine)
-			expect(deployment_grid.grid[1][1].content).to eq submarine
+			deployment_grid.grid[1][1]=cell2
+			deployment_grid.grid[1][2]=cell3
+			deployment_grid.grid[1][3]=cell4
+
+			expect(cell4).to receive(:content=).with(submarine)
+			expect(cell2).to receive(:content=).with(submarine)
+			expect(cell3).to receive(:content=).with(submarine)
+			deployment_grid.deploy(submarine, 1, 1, "horizontal")
+
 		end
 	end
 

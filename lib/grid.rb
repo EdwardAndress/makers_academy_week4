@@ -7,36 +7,35 @@ class Grid
 		@grid.map!{|internal_array|internal_array.map!{|cell| cell=Cell.new }}
 	end
 
-	def add_cells
-	end
 
 	def grid
 		@grid
 	end
 
-	def shot(x, y)
-		off_grid(x-1 ,y-1)
-		grid[x-1][y-1].check_for_hit!
+	def shot(row, col)
+		off_grid(row-1 ,col-1)
+		grid[row-1][col-1].check_for_hit!
 	end
 
-	def deploy(x, y, boat)
+	def deplocol(boat, row, col, direction)
 
-		counter = boat.size
+		counter = 2
 
 		while counter > 0 do
-			self.place_boat(x+counter, y, boat)
+			col += counter
+			place_boat(row, col, boat)
 			counter -= 1
 		end
 	end
 
 
-	def place_boat(x, y, boat)
-		off_grid(x, y)
-		grid[x][y].content=(boat)
+	def place_boat(row, col, boat)
+		off_grid(row, col)
+		grid[row][col].content=(boat)
 	end
 
-	def off_grid(x, y)
-		raise "That square is off the grid" if x > 9 || y > 9
+	def off_grid(row, col)
+		raise "That square is off the grid" if row > 9 || col > 9
 	end
 
 end
