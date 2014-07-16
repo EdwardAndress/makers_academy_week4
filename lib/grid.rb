@@ -1,45 +1,54 @@
-# require './lib/cell'
-
-class Cell
-end
+require './lib/cell'
 
 class Grid
 
-	def initialize(content=Cell.new)
-		@grid = []
-		10.times do
-			@grid << ([content] * 10)
-		end
+	def initialize
+		@grid= Array.new(10){Array.new(10)}
+		@grid.map!{|internal_array|internal_array.map!{|cell| cell=Cell.new }}
 	end
+
 
 	def grid
 		@grid
 	end
 
-	def shot(x, y)
-		off_grid(x-1 ,y-1)
-		grid[x-1][y-1].check_for_hit!
+	def shot(row, col)
+		off_grid(row-1 ,col-1)
+		grid[row-1][col-1].check_for_hit!
 	end
 
-	def deploy(x, y, boat, direction)
+	def deploy(boat, row, col, direction)
 
 		counter = boat.size
 
-		until counter == 0
-			grid.place_boat(x.+(counter), y, boat)
-			count -= 1
+		if direction == "horizontal"
+			col-=1
+			while counter > 0 do
+				col += counter
+				place_boat(row, col, boat)
+				col -= counter
+				counter -= 1
+			end
+		else 
+			row-=1
+			while counter > 0 do
+				row += counter
+				place_boat(row, col, boat)
+				row -= counter
+				counter -= 1
+			end
 		end
 
 	end
 
 
-	def place_boat(x, y, boat)
-		off_grid(x, y)
-		grid[x][y].content(boat)
+	def place_boat(row, col, boat)
+		off_grid(row, col)
+		grid[row][col].content=(boat)
 	end
 
-	def off_grid(x, y)
-		raise "That square is off the grid" if x > 9 || y > 9
+	def off_grid(row, col)
+		raise "That square is off the grid" if row > 9 || col > 9
 	end
 
 end

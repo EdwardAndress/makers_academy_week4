@@ -2,12 +2,14 @@ require 'grid'
 
 describe Grid do
 
-	let(:eddys_grid) 	{ Grid.new(cell) }
-	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
-	let(:cell2) {double :cell2, check_for_hit!: :nil}
-	let(:submarine) {double :submarine}
-	let(:cruiser) {double :cruiser}
-	let(:alex_grid) {Grid.new(cruiser)}
+	let(:eddys_grid) 			{ Grid.new }
+	let(:deployment_grid)	{Grid.new}
+	let(:cell) 						{double :cell, check_for_hit!: :nil, content: "Destroyer"}
+	let(:cell2) 					{double :cell2, check_for_hit!: :nil, content: "submarine"}
+	let(:cell3) 					{double :cell3, check_for_hit!: :nil, content: "submarine"}
+	let(:cell4) 					{double :cell4, check_for_hit!: :nil, content: "submarine"}
+
+	let(:submarine) {double :submarine, size: 3}
 	
 	context 'create grid' do
 
@@ -48,7 +50,7 @@ describe Grid do
 
 		it 'can be used to place boats on the grid' do
 			eddys_grid.grid[2][2]=cell2
-			expect(cell2).to receive(:content).with("Destroyer")
+			expect(cell2).to receive(:content=).with("Destroyer")
 			eddys_grid.place_boat(2, 2, "Destroyer")
 		end
 
@@ -71,10 +73,25 @@ describe Grid do
 		end
 
 		it 'will automate horizontal placement of a boat' do
-			allow(alex_grid.grid).to receive(:deploy).with(1, 1, cruiser)
-			alex_grid.grid.deploy(1, 1, cruiser)
-			expect(alex_grid.grid[1][1]).to eq cruiser
+			deployment_grid.grid[1][1]=cell2
+			deployment_grid.grid[1][2]=cell3
+			deployment_grid.grid[1][3]=cell4
+			expect(cell4).to receive(:content=).with(submarine)
+			expect(cell2).to receive(:content=).with(submarine)
+			expect(cell3).to receive(:content=).with(submarine)
+			deployment_grid.deploy(submarine, 1, 1, "horizontal")
 		end
+
+		it 'will automate vertical placement of a boat' do
+
+			deployment_grid.grid[1][1]=cell2
+			deployment_grid.grid[2][1]=cell3
+			deployment_grid.grid[3][1]=cell4
+			expect(cell4).to receive(:content=).with(submarine)
+			expect(cell2).to receive(:content=).with(submarine)
+			expect(cell3).to receive(:content=).with(submarine)
+			deployment_grid.deploy(submarine, 1, 1, "vertical")
+end
 	end
 
 end
