@@ -29,6 +29,7 @@ describe 'game_engine' do
 		it 'places the boat with coordinates' do
 			row = "1"
 			col = "1"
+			orientation = "vertical"
 			expect(game.player1.grid).to receive(:deploy).with("sub", 1,1, "vertical")
 			game.player1.grid.deploy("sub", 1, 1, "vertical")
 		end
