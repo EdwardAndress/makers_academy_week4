@@ -99,13 +99,14 @@ describe Grid do
 		end
 
 		it 'will not let a user place a boat if any of the squares already have a boat' do
+			
 		end
 
 		it 'will not let a user place a boat if it will go off the board' do
+			deployment_grid.deploy(submarine, 1, 9, "horizontal")
+			deployment_grid.grid[1][1]=cell2
+			expect{deployment_grid.deploy(submarine, 1, 1, "horizontal")}.to raise_error(RuntimeError)
+			expect(cell2).not_to receive(:content=)
 		end
-
-
-
-	end
 
 end
