@@ -17,13 +17,16 @@ class Grid
 		grid[row-1][col-1].check_for_hit!
 	end
 
-	def deplocol(boat, row, col, direction)
+	def deploy(boat, row, col, direction)
 
-		counter = 2
+		counter = boat.size
+
+		col-=1
 
 		while counter > 0 do
 			col += counter
 			place_boat(row, col, boat)
+			col -= counter
 			counter -= 1
 		end
 	end
