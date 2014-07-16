@@ -1,9 +1,10 @@
+require_relative 'grid'
+
 class Player
 
 	attr_reader :grid
 
-	def initialize(name=:Player, grid)
-		@player=name
+	def initialize(grid=Grid.new)
 		@grid = grid
 	end
 	

@@ -38,7 +38,6 @@ class Grid
 				counter -= 1
 			end
 		end
-
 	end
 
 
