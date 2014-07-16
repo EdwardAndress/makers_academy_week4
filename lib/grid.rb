@@ -50,4 +50,5 @@ class Grid
 		raise "That square is off the grid" if row > 9 || col > 9
 	end
 
+
 end

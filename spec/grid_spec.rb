@@ -72,6 +72,10 @@ describe Grid do
 			eddys_grid.shot(2,4)
 		end
 
+	end
+
+	context 'boat placement'
+
 		it 'will automate horizontal placement of a boat' do
 
 			deployment_grid.grid[1][1]=cell2
@@ -94,6 +98,13 @@ describe Grid do
 			deployment_grid.deploy(submarine, 1, 1, "vertical")
 
 		end
+
+		it 'will not let a user place a boat if any of the squares already have a boat' do
+		end
+
+		it 'will not let a user place a boat if it will go off the board' do
+		end
+
 	end
 
 end
