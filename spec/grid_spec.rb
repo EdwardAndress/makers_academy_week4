@@ -67,7 +67,7 @@ describe Grid do
 		end
 
 		it 'will translate a user input into the array indices' do
-			eddys_grid.grid[1][3]=cell2
+			eddys_grid.grid[1][3] = cell2
 			expect(cell2).to receive(:check_for_hit!)
 			eddys_grid.shot(2,4)
 		end
@@ -77,7 +77,6 @@ describe Grid do
 	context 'boat placement'
 
 		it 'will automate horizontal placement of a boat' do
-
 			deployment_grid.grid[1][1]=cell2
 			deployment_grid.grid[1][2]=cell3
 			deployment_grid.grid[1][3]=cell4
@@ -104,6 +103,8 @@ describe Grid do
 
 		it 'will not let a user place a boat if it will go off the board' do
 		end
+
+
 
 	end
 

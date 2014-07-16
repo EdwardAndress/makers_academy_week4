@@ -1,6 +1,5 @@
 require 'cell'
 
-
 describe do
 	let(:cell)             { Cell.new }
 	let(:ship)             { double :ship, size: 4, hit!: 2, hits_count: 0 }
