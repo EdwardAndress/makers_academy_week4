@@ -1,4 +1,4 @@
-require './lib/player'
+#require './lib/player'
 
 def start_game
 	player1 = Player.new

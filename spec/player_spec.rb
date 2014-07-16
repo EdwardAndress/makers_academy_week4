@@ -2,24 +2,38 @@ require 'player'
 
 describe 'Player' do
 
-	let(:grid) { double :grid }
+	let(:player) { Player.new(grid)    }
+	
+
+	it 'is initialize with 5 ship' do
+		#expect(player.container.map(&:class)).to eq [Submarine, Aircraft_carrier, Cruiser, Battleship, Destroyer]
+		player.fleet.each do |item|
+			expect(item).to be_a Ship
+		end
+	end
+
+end
+
+
+
+=begin
+	
 	xit 'place the boat' do
 		player =  Player.new
 		expect(player).to be_ready_to_play
 	end
 	
-	it ' can place a boat ' do
-	player = Player.new('Name', grid)
-	expect(grid).to receive(:deploy).with(:boat,:row,:col,:direction)
-	player.place_this_boat_at(:boat,:row,:col,:direction)
+	xit ' can place a boat ' do
+		expect(grid).to receive(:deploy).with(:boat,:row,:col,:direction)
+		player.place_this_boat_at(:boat,:row,:col,:direction)
 	end
 
-	it 'can guess a shot' do
-		player = Player.new('Name',grid)
+	xit 'can guess a shot' do
 		cell= double :cell
-		grid= double :grid
-		allow(player).to receive(:shoot_to).with(coordinate_1,coordinate_2)
-		expect(grid.shoot!).with(coordinate_1,coordinate_2)
+		grid= double :grid,shot: 1
+		expect(grid).to receive(:shot).with(1,6)
+		player.shoot_to(1,6)
 	end
 
-end
+	
+=end

@@ -26,14 +26,14 @@ describe 'Ship' do
 	end
 
 	it 'can be sunk' do
-		4.times {submarine.hit!}
+		3.times {submarine.hit!}
 		expect(submarine).to be_sunk
 	end
 
 	context 'Subclasses' do
 
 		it 'can be a submarine' do
-			expect(submarine.size).to eq 4
+			expect(submarine.size).to eq 3
 		end
 
 	end
