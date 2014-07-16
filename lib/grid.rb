@@ -3,14 +3,11 @@ require './lib/cell'
 class Grid
 
 	def initialize
-		# @grid ||= []
-		# 10.times do
-		# 	@grid << ([Cell.new] * 10)
-		# end
+		@grid= Array.new(10){Array.new(10)}
+		@grid.map!{|internal_array|internal_array.map!{|cell| cell=Cell.new }}
+	end
 
-		# This (and the old version)
-		# puts the same new cell in many locations
-		# the exact same cell object!
+	def add_cells
 	end
 
 	def grid

@@ -2,7 +2,7 @@ require 'grid'
 
 describe Grid do
 
-	let(:eddys_grid) 		{ Grid.new(cell) }
+	let(:eddys_grid) 		{ Grid.new }
 	let(:deployment_grid)	{Grid.new}
 	let(:cell) {double :cell, check_for_hit!: :nil, content: "Destroyer"}
 	let(:cell2) {double :cell2, check_for_hit!: :nil}
