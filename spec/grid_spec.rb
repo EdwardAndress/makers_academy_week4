@@ -81,6 +81,17 @@ describe Grid do
 			expect(cell2).to receive(:content=).with(submarine)
 			expect(cell3).to receive(:content=).with(submarine)
 			deployment_grid.deploy(submarine, 1, 1, "horizontal")
+		end
+
+		it 'will automate vertical placement of a boat' do
+
+			deployment_grid.grid[1][1]=cell2
+			deployment_grid.grid[2][1]=cell3
+			deployment_grid.grid[3][1]=cell4
+			expect(cell4).to receive(:content=).with(submarine)
+			expect(cell2).to receive(:content=).with(submarine)
+			expect(cell3).to receive(:content=).with(submarine)
+			deployment_grid.deploy(submarine, 1, 1, "vertical")
 
 		end
 	end

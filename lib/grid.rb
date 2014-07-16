@@ -21,13 +21,22 @@ class Grid
 
 		counter = boat.size
 
-		col-=1
-
-		while counter > 0 do
-			col += counter
-			place_boat(row, col, boat)
-			col -= counter
-			counter -= 1
+		if direction == "horizontal"
+			col-=1
+			while counter > 0 do
+				col += counter
+				place_boat(row, col, boat)
+				col -= counter
+				counter -= 1
+			end
+		else 
+			row-=1
+			while counter > 0 do
+				row += counter
+				place_boat(row, col, boat)
+				row -= counter
+				counter -= 1
+			end
 		end
 	end
 
