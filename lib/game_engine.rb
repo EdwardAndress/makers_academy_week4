@@ -20,4 +20,6 @@ class Game
 		player.grid.deploy(player.fleet.shift, row, col, orientation)
 	end
 
+	
+
 end
