@@ -28,7 +28,7 @@ let(:boat)	 {double :boat,size: 4}
 		it 'does arranges the owners board' do
 	
 			my_grid.deploy(boat, 0, 0, "horizontal")
-			transformed = my_grid.arrange_my_grid
+			transformed = my_grid.display_current_players_board
 			expect(transformed[0][0]).to eq("|S|")
 			expect(transformed[0][1]).to eq("|S|")
 			expect(transformed[1][0]).to eq("| |")
@@ -37,7 +37,7 @@ let(:boat)	 {double :boat,size: 4}
 		it 'prints out the players board' do 
 			expect(my_grid).to receive(:puts).with('| || || || || || || || || || |').exactly(10).times
 
-			my_grid.print_board
+			my_grid.print_board(my_grid.display_current_players_board)
 		end
 
 	end
@@ -48,7 +48,7 @@ let(:boat)	 {double :boat,size: 4}
 		
 		it' does not print a ship square if the cell has not been hit' do
 			my_grid.deploy(boat,0,0,"horizontal")
-			transformed = my_grid.display_blank_for_ships
+			transformed = my_grid.display_opponents_board
 			expect(transformed[0][0]).to eq("| |")
 		end
 

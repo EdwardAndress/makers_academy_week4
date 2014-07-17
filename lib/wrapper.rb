@@ -1,6 +1,6 @@
 module Wrapper
 
-def arrange_my_grid
+def display_current_players_board
 	grid.map{|internal_array| internal_array.map{|cell| 
 		if !cell.water?
 			transform_ship_squares
@@ -21,15 +21,15 @@ end
 
 
 
-def print_board
-	arrange_my_grid.each{ |row| puts row.join }
+def print_board(player_or_opponent)
+	player_or_opponent.each{ |row| puts row.join }
 end
 
 def transform_misses
 	cell="|M|"
 end
 
-def display_blank_for_ships
+def display_opponents_board
 	grid.map{|internal_array| internal_array.map{|cell| 
 		if cell.content!=:boat_hit || cell.content !=:miss
 			display_blank_squares
@@ -38,8 +38,9 @@ def display_blank_for_ships
 		else
 			transform_misses
 		end
-
 		}}
 end
+
+
 
 end
