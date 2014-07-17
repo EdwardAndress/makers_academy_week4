@@ -22,7 +22,7 @@ class Grid
 	def deploy(boat, row, column, orientation)
 			boat.size.times do
 				place_boat(row, column, boat)
-				orientation == "horizontal" ? cgi : row = row.next
+				orientation == "horizontal" ? column = column.next : row = row.next
 			end
 	end
 
