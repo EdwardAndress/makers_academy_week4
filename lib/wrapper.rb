@@ -1,8 +1,26 @@
 module Wrapper
 
-def transform_water_squares
-grid.map{|internal_array|internal_array.map{|cell| cell="| |"}} 
+def display_my_grid
+	grid.map{|internal_array| internal_array.map{|cell| 
+		if !cell.water?
+			transform_ship_squares
+		else cell.water?
+			transform_water_squares
+		end
+	}}
+end
 
+def transform_water_squares
+	cell="| |"
+
+end
+
+def transform_ship_squares
+	cell="|S|"
+end
+
+def transform_misses
+	grid.map{|internal_array|internal_array.map{|cell| cell="|M|"}} 
 end
 
 
