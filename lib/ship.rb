@@ -1,3 +1,4 @@
+
 class Ship
 
 	attr_accessor :size
@@ -20,6 +21,7 @@ class Ship
 	end
 
 end
+
 
 class Submarine < Ship
 

@@ -99,8 +99,11 @@ describe Grid do
 
 		end
 
-		it 'will not let a user place a boat if any of the squares already have a boat' do
-			
+		it 'should know if all the boats are sunked' do
+			grid = Grid.new
+			ship = double :ship, size: 2, sunk?: true
+			grid.deploy(ship, 1, 1, "vertical")
+			expect(grid.all_boats_sunken?).to eq true
 		end
 
 		# xit 'will not let a user place a boat if it will go off the board' do
