@@ -1,7 +1,10 @@
 require './lib/cell'
 require 'wrapper'
+
 class Grid
+
 include Wrapper
+
 	def initialize
 		@grid= Array.new(10){Array.new(10)}
 		@grid.map!{|internal_array|internal_array.map!{|cell| cell=Cell.new }}
@@ -37,6 +40,7 @@ include Wrapper
 				counter -= 1
 			end
 		end
+		
 	end
 
 

@@ -3,6 +3,7 @@ require 'game_engine'
 describe 'game_engine' do
 
 	let(:game){Game.new}
+	let(:player){Player.new}
 	
 	context 'starts game' do
 
@@ -13,10 +14,23 @@ describe 'game_engine' do
 		end
 
 		it 'allows a player place his or her boats on the grid' do
-			player1 = Player.new
-			@fleet = ["submarine", "destroyer"]
-			expect(game).to receive(:puts).with("Where would you like to position #{@fleet.first}")
-			game.prompt_for_boat_deployment
+			
+			expect(game).to receive(:puts).with("Where would you like to position #{player.fleet.first}")
+			game.prompt_for_boat_deployment(player)
+		end
+
+		it 'takes user input for boat deployment' do
+			row = "1"
+			col = "1"
+			expect(game).to receive(:gets).and_return("1", "1")
+			game.get_coordinates(player)
+		end
+
+		it 'places the boat with coordinates' do
+			row = "1"
+			col = "1"
+			expect(game.player1.grid).to receive(:deploy).with("sub", 1,1, "vertical")
+			game.player1.grid.deploy("sub", 1, 1, "vertical")
 		end
 
 	end	

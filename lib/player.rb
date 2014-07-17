@@ -1,6 +1,6 @@
 require_relative 'grid'
 
-require 'ship'
+require_relative 'ship'
 
 class Player
 
