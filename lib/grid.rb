@@ -1,10 +1,6 @@
 require './lib/cell'
-
-<<<<<<< HEAD
-=======
 require './lib/wrapper'
 
->>>>>>> cf36b8b3a5d611da63edccbd5159c655b5c0f7c0
 class Grid
 
 	def initialize
@@ -53,6 +49,14 @@ class Grid
 
 	def off_grid(row, col)
 		raise "That square is off the grid" if row > 9 || col > 9
+	end
+
+	def boats
+		boats = grid.flatten.select{|boat| boat.content.respond_to?(:sunk?)}
+	end
+
+	def all_boats_sunken?
+		boats.all? {|boat| boat.content.sunk? }
 	end
 
 
