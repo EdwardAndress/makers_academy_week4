@@ -31,10 +31,6 @@ describe 'Ship' do
 		expect(submarine).to be_sunk
 	end
 
-	it 'check if the ship has been sunk after receiving a hit' do
-		expect(submarine).to receive(:sunk?).and_return(false)
-		submarine.hit!
-	end
 
 	
 	context 'Subclasses' do

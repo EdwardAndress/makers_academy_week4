@@ -106,6 +106,15 @@ describe Grid do
 			expect(grid.all_boats_sunken?).to eq true
 		end
 
+		it 'should know if all the boats are sunked' do
+			grid = Grid.new
+			ship = double :ship, size: 2, sunk?: true
+			ship2 = double :ship, size: 2, sunk?: false
+			grid.deploy(ship, 1, 1, "vertical")
+			grid.deploy(ship2, 5, 6, "vertical")
+			expect(grid.all_boats_sunken?).to eq false
+		end
+
 		# xit 'will not let a user place a boat if it will go off the board' do
 		# 	deployment_grid.deploy(submarine, 1, 9, "horizontal")
 		# 	deployment_grid.grid[1][1]=cell2

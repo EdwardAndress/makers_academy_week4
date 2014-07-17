@@ -13,5 +13,7 @@ class Player
 	 	@sunk_count 
 	end
 
+	
+
 end
 
