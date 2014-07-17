@@ -17,7 +17,7 @@ class Grid
 
 	def shot(row, col)
 		#off_grid(row-1 ,col-1)
-		grid[row-1][col-1].check_for_hit!
+		grid[row][col].check_for_hit!
 	end
 
 	def deploy(boat, row, col, direction)
