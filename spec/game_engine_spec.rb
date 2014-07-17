@@ -35,6 +35,26 @@ describe 'game_engine' do
 			game.player1.grid.deploy("sub", 1, 1, "vertical")
 		end
 
+		it 'prompts the player for shot coordinates' do
+			expect(game).to receive(:puts).with("Take a shot!")
+			allow(game).to receive(:gets).and_return('1','2')
+			game.prompt_for_shot(player)
+		end
+
+		it 'takes user input for shots' do
+			expect(game).to receive(:gets).and_return('1', '2')
+			game.get_shot_coordinates(player)
+		end
+
+		it 'uses user input to make a shot' do
+			expect(game).to receive(:gets).and_return('1','2')
+			expect(player.grid).to receive(:shot).with(1,2)
+			game.get_shot_coordinates(player)
+		end
+
+
+
+
 	end	
 
 

@@ -1,10 +1,11 @@
 require './lib/cell'
 
+<<<<<<< HEAD
+=======
 require './lib/wrapper'
 
+>>>>>>> cf36b8b3a5d611da63edccbd5159c655b5c0f7c0
 class Grid
-
-	include Wrapper
 
 	def initialize
 		@grid= Array.new(10){Array.new(10)}

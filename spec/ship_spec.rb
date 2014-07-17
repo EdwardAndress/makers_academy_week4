@@ -1,8 +1,9 @@
 require 'ship'
-
+require 'player'
 describe 'Ship' do
 	let(:ship)      { Ship.new      }
 	let(:submarine) { Submarine.new }
+	let(:player)		{ Player.new}
 
 	it 'can be hit' do
 		ship = Ship.new
@@ -30,6 +31,12 @@ describe 'Ship' do
 		expect(submarine).to be_sunk
 	end
 
+	it 'check if the ship has been sunk after receiving a hit' do
+		expect(submarine).to receive(:sunk?).and_return(false)
+		submarine.hit!
+	end
+
+	
 	context 'Subclasses' do
 
 		it 'can be a submarine' do

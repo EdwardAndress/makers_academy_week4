@@ -20,6 +20,15 @@ class Game
 		player.grid.deploy(player.fleet.shift, row, col, orientation)
 	end
 
-	
+	def prompt_for_shot(player)
+		puts 'Take a shot!'
+		get_shot_coordinates(player)
+	end
+
+	def get_shot_coordinates(player)
+		row = gets.chomp.to_i
+		col = gets.chomp.to_i
+		player.grid.shot(row, col)
+	end
 
 end

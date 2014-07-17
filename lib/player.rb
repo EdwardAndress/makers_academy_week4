@@ -9,5 +9,9 @@ class Player
 			@fleet=[submarine = Submarine.new, cruiser = Cruiser.new, aircraft_carrier = Aircraft_carrier.new, battleship = Battleship.new, destroyer = Destroyer.new]
 	end
 
+	def sunk_count
+	 	@sunk_count 
+	end
+
 end
 
