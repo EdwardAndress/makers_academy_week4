@@ -1,4 +1,4 @@
-require './lib/player'
+exirequire './lib/player'
 
 class Game
 	attr_reader :player1, :player2
@@ -16,7 +16,8 @@ class Game
 	def get_coordinates(player)
 		row = gets.chomp.to_i
 		col = gets.chomp.to_i
-		player.grid.deploy(player.fleet.shift, row, col, "vertical")
+		orientation = gets.chomp
+		player.grid.deploy(player.fleet.shift, row, col, orientation)
 	end
 
 end

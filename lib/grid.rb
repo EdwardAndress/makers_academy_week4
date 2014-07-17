@@ -1,9 +1,9 @@
 require './lib/cell'
-require 'wrapper'
+#require 'wrapper'
 
 class Grid
 
-include Wrapper
+#include Wrapper
 
 	def initialize
 		@grid= Array.new(10){Array.new(10)}
@@ -15,7 +15,7 @@ include Wrapper
 	end
 
 	def shot(row, col)
-		off_grid(row-1 ,col-1)
+		#off_grid(row-1 ,col-1)
 		grid[row-1][col-1].check_for_hit!
 	end
 
