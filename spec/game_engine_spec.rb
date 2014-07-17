@@ -52,10 +52,13 @@ describe 'game_engine' do
 			game.get_shot_coordinates(player)
 		end
 
-
-
-
 	end	
+
+	context 'takes turns' do
+		it 'makers players take turns until the game is over' do
+			
+		end
+	end
 
 
 
