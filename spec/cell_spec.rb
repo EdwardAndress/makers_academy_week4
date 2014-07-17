@@ -25,10 +25,14 @@ describe do
 	it 'triggers the hit method on the ship' do
 		ship  = double :ship
 		a1 = Cell.new(ship)
-
 		expect(ship).to receive :hit!
 		a1.check_for_hit!
 	end
+
+	it ' changes the water to miss if a shot is taken on water' do
+		allow(cell.check_for_hit!).to receive(:miss)
+		cell.check_for_hit!
+	end		
  
 	# it 'a cell can be hit and target a boat' do
 	# 	sub = double :ship, size: 4, hit!: 1

@@ -13,8 +13,12 @@ class Cell
 	end
 
 	def check_for_hit!
-		return if water?
+		return miss if water?
 		content.hit!
+	end
+
+	def miss
+		content == :miss
 	end
 
 end
