@@ -1,4 +1,4 @@
-exirequire './lib/player'
+require './lib/player'
 
 class Game
 	attr_reader :player1, :player2
