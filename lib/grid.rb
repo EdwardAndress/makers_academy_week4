@@ -19,28 +19,11 @@ class Grid
 		grid[row][col].check_for_hit!
 	end
 
-	def deploy(boat, row, col, direction)
-
-		counter = boat.size
-
-		if direction == "horizontal"
-			col-=1
-			while counter > 0 do
-				col += counter
-				place_boat(row, col, boat)
-				col -= counter
-				counter -= 1
+	def deploy(boat, row, column, orientation)
+			boat.size.times do
+				place_boat(row, column, boat)
+				orientation == "horizontal" ? cgi : row = row.next
 			end
-		else 
-			row-=1
-			while counter > 0 do
-				row += counter
-				place_boat(row, col, boat)
-				row -= counter
-				counter -= 1
-			end
-		end
-		
 	end
 
 
