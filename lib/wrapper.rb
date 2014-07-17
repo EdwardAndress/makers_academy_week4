@@ -1,5 +1,11 @@
 module Wrapper
 
+def transform_water_squares
+grid.map{|internal_array|internal_array.map{|cell| cell="| |"}} 
+
+end
+
+
 # def shootingGrid
 # #shows 2nd player grid
 
