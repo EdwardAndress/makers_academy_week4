@@ -16,7 +16,7 @@ class Grid
 	end
 
 	def shot(row, col)
-		#off_grid(row-1 ,col-1)
+		off_grid(row-1 ,col-1)
 		grid[row][col].check_for_hit!
 	end
 

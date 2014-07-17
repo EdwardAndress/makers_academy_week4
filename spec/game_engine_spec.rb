@@ -14,7 +14,7 @@ describe 'game_engine' do
 		end
 
 		it 'allows a player place his or her boats on the grid' do
-			
+			allow(game).to receive(:gets).and_return('1', '1', 'vertical')
 			expect(game).to receive(:puts).with("Where would you like to position #{player.fleet.first}")
 			game.prompt_for_boat_deployment(player)
 		end
@@ -22,7 +22,8 @@ describe 'game_engine' do
 		it 'takes user input for boat deployment' do
 			row = "1"
 			col = "1"
-			expect(game).to receive(:gets).and_return("1", "1")
+			orientation = "vertical"
+			expect(game).to receive(:gets).and_return("1", "1", "vertical")
 			game.get_coordinates(player)
 		end
 
