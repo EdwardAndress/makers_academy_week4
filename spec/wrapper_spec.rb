@@ -30,13 +30,19 @@ let(:my_grid){Grid.new}
 			expect(transformed[0][0]).not_to eq("|S|")
 		end
 
-		it 'does print the board to the owner' do
+		it 'does arranges the owners board' do
 			boat= double :boat, size: 4
 			my_grid.deploy(boat, 0, 0, "horizontal")
-			transformed = my_grid.display_my_grid
+			transformed = my_grid.arrange_my_grid
 			expect(transformed[0][0]).to eq("|S|")
 			expect(transformed[0][1]).to eq("|S|")
 			expect(transformed[1][0]).to eq("| |")
+		end
+
+		it 'prints out the players board' do 
+			expect(my_grid).to receive(:puts).with('| || || || || || || || || || |').exactly(10).times
+
+			my_grid.print_board
 		end
 
 	end

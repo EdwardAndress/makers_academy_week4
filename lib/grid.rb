@@ -1,6 +1,6 @@
 require './lib/cell'
 
-require 'wrapper'
+require './lib/wrapper'
 
 class Grid
 
