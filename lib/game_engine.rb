@@ -11,4 +11,5 @@ class Game
 	def prompt_for_boat_deployment
 		puts "Where would you like to position #{@fleet.first}"
 	end
+	
 end
