@@ -15,6 +15,7 @@ class Cell
 	def check_for_hit!
 		return miss if water?
 		content.hit!
+		content == :boat_hit
 	end
 
 	def miss
