@@ -1,22 +1,46 @@
 module Wrapper
 
-def transform_water_squares
-grid.map{|internal_array|internal_array.map{|cell| cell="| |"}} 
+def display_current_players_board
+	grid.map{|internal_array| internal_array.map{|cell| 
+		if !cell.water?
+			transform_ship_squares
+		else cell.water?
+			display_blank_squares
+		end
+	}}
+end
+
+def display_blank_squares
+	cell="| |"
 
 end
 
+def transform_ship_squares
+	cell="|S|"
+end
 
-# def shootingGrid
-# #shows 2nd player grid
 
-# # @gridPlayer2.map{|internal_array|internal_array.map{|cell| 
-# # if cell.content==water?  
-# # cell=cell.content=:Water
-# # elsif cell.content==boat
-# # cell=cell.content=:Water
-# # elsif cell.content==hit?
-# # cell=cell.content=:hit
-# # end
-# # }}
+
+def print_board(player_or_opponent)
+	player_or_opponent.each{ |row| puts row.join }
+end
+
+def transform_misses
+	cell="|M|"
+end
+
+def display_opponents_board
+	grid.map{|internal_array| internal_array.map{|cell| 
+		if cell.content!=:boat_hit || cell.content !=:miss
+			display_blank_squares
+		elsif cell.content == :boat_hit
+			transform_ship_squares
+		else
+			transform_misses
+		end
+		}}
+end
+
+
 
 end
