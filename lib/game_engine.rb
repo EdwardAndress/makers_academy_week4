@@ -15,12 +15,12 @@ class Game
 			get_coordinates(player)
 		end
 
-		def get_coordinates(player)
-			row = gets.chomp.to_i
-			col = gets.chomp.to_i
-			orientation = gets.chomp
-			player.grid.deploy(player.fleet.shift, row, col, orientation)
-		end
+	def get_coordinates(player)
+		row = gets.chomp.to_i
+		col = gets.chomp.to_i
+		orientation = gets.chomp
+		player.grid.deploy(player.fleet.shift, row, col, orientation)
+	end
 
 
 	def prompt_for_shot(player)

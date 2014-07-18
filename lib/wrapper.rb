@@ -30,7 +30,9 @@ def transform_misses
 end
 
 def display_opponents_board
+	
 	grid.map{|internal_array| internal_array.map{|cell| 
+		
 		if cell.content!=:boat_hit || cell.content !=:miss
 			display_blank_squares
 		elsif cell.content == :boat_hit
@@ -38,6 +40,7 @@ def display_opponents_board
 		else
 			transform_misses
 		end
+
 		}}
 end
 

@@ -29,6 +29,7 @@ class Submarine < Ship
 	end
 
 end
+
 class Cruiser < Ship
 
 	def initialize(size = 3)

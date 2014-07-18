@@ -29,11 +29,15 @@ describe do
 		a1.check_for_hit!
 	end
 
-	it ' changes the water to miss if a shot is taken on water' do
+	xit ' changes the water to miss if a shot is taken on water' do
 		allow(cell.check_for_hit!).to receive(:miss)
 		cell.check_for_hit!
 	end		
- 
+ 	
+ 	it 'changes the contents of the cell to miss' do
+ 		cell.miss
+ 		expect(cell.content).to eq :miss
+ 	end 
 	# it 'a cell can be hit and target a boat' do
 	# 	sub = double :ship, size: 4, hit!: 1
 	# 	a2 = Cell.new(sub)
