@@ -15,7 +15,7 @@ class Grid
 
 	def grid
 		@grid
-	end
+	end	
 
 	def shot(row, col)
 		off_grid(row-1 ,col-1)

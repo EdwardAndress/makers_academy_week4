@@ -1,3 +1,4 @@
+
 ['grid', 'ship'].each {|r| require_relative r }
 
 class Player
