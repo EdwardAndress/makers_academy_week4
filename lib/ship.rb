@@ -10,6 +10,7 @@ class Ship
 
 	def hit!
 		@hits_count += 1
+		puts "#{self.class} hit!"
 	end
 
 	def hits_count

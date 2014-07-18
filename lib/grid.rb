@@ -45,8 +45,12 @@ class Grid
 	end
 
 	def print_sunk_boats
-		@boats.each do |boat| 
-		 puts "you have sunk a #{boat.class}" if boat.sunk?
+		if @boats.any? {|boat| boat.sunk?}
+			@boats.each do |boat| 
+				puts "you have sunk a #{boat.class}" if boat.sunk?
+			end
+		else
+			puts "You have not sunk any boats yet... keep trying!"
 		end
 	end
 
