@@ -3,8 +3,9 @@ require 'game_engine'
 describe 'game_engine' do
 
 	let(:game){Game.new}
+	let(:grid){ Grid.new }
 	let(:player){Player.new}
-	
+	 
 	context 'starts game' do
 
 		it 'initialises 2 players' do

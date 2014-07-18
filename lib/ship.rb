@@ -19,6 +19,7 @@ class Ship
 	def sunk?
 		hits_count == size
 	end
+	
 
 end
 

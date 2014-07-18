@@ -1,6 +1,6 @@
 require 'grid'
 require 'wrapper'
-
+require 'player'
 describe Grid do
 
 
@@ -10,8 +10,9 @@ describe Grid do
 	let(:cell2) 					{double :cell2, check_for_hit!: :nil, content: "submarine"}
 	let(:cell3) 					{double :cell3, check_for_hit!: :nil, content: "submarine"}
 	let(:cell4) 					{double :cell4, check_for_hit!: :nil, content: "submarine"}
-
-	let(:submarine) {double :submarine, size: 3}
+	let(:sub)             {double :sub, sunk?: true, size: 2, class: "Submarine"}
+	#let(:game)           { Game.new }
+	let(:submarine)       {double :submarine, size: 3}
 	
 	context 'create grid' do
 
@@ -116,7 +117,21 @@ describe Grid do
 			expect(grid.all_boats_sunken?).to eq false
 		end
 
+		it 'puts a message when a boat is sunk' do
+			eddys_grid.deploy(sub, 1,1, "horizontal")
+			expect(eddys_grid).to receive(:puts).with("you have sunk a Submarine")
+			eddys_grid.print_sunk_boats
+		end
 
+		xit 'creates an array of unique boats' do
+			number_of_boats = eddys_grid.boats.length
+			expect(number_of_boats).to eq 2
+		end
+
+		it 'put the deployed boat into an array' do
+			eddys_grid.deploy(sub,1,1, "horizontal")
+			expect(eddys_grid.boats).to include(sub)
+		end
 
 		# xit 'will not let a user place a boat if it will go off the board' do
 		# 	deployment_grid.deploy(submarine, 1, 9, "horizontal")
