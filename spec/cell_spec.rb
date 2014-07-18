@@ -29,9 +29,10 @@ describe do
 		a1.check_for_hit!
 	end
 
-	xit ' changes the water to miss if a shot is taken on water' do
-		allow(cell.check_for_hit!).to receive(:miss)
+	it ' changes the water to miss if a shot is taken on water' do
 		cell.check_for_hit!
+		expect(cell.content).to eq(:miss)
+		
 	end		
  	
  	it 'changes the contents of the cell to miss' do
