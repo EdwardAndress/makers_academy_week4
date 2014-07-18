@@ -16,7 +16,7 @@ describe 'game_engine' do
 		it 'allows a player place his or her boats on the grid' do
 			allow(game).to receive(:gets).and_return('1', '1', 'vertical')
 			expect(game).to receive(:puts).with("Where would you like to position #{player.fleet.first}")
-			game.prompt_for_boat_deployment(player)
+			game.gets(player)
 		end
 
 		it 'takes user input for boat deployment' do
@@ -38,7 +38,7 @@ describe 'game_engine' do
 		it 'prompts the player for shot coordinates' do
 			expect(game).to receive(:puts).with("Take a shot!")
 			allow(game).to receive(:gets).and_return('1','2')
-			game.prompt_for_shot(player)
+			game.prompt_for_shot_at(player)
 		end
 
 		it 'takes user input for shots' do
@@ -54,12 +54,24 @@ describe 'game_engine' do
 
 	end	
 
-	context 'takes turns' do
-		it 'makers players take turns until the game is over' do
-			
+	context ' game starts ' do
+
+		it'and players are prompted to take turns in placing their boats' do
+				player2 = Player.new
+				player2.fleet=[Submarine.new]
+				allow(STDIN).to receive(:gets).and_return('0','0','vertical')
+				game.loop_deploy(player2)
+				expect(player2.fleet).to eq []
 		end
+
 	end
 
-
-
 end
+
+	# 	it 'loops until all of a players boats are deployed' do
+	# 		allow(game).to receive(:gets).and_return('0', '0', 'vertical')
+	# 		loop_deploy(player1)
+	# 		expect(player1.fleet).to eq []
+	# 	end
+
+	# end
