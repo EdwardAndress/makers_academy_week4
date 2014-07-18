@@ -3,9 +3,10 @@ require 'wrapper'
 
 describe Grid do
 
-	let(:eddys_grid) 			{ Grid.new }
-	let(:deployment_grid)	{Grid.new}
-	let(:cell) 						{double :cell, check_for_hit!: :nil, content: "Destroyer"}
+
+	let(:eddys_grid) 			{Grid.new 																								}
+	let(:deployment_grid)	{Grid.new																									}
+	let(:cell) 						{double :cell, check_for_hit!: :nil, content: "Destroyer"	}
 	let(:cell2) 					{double :cell2, check_for_hit!: :nil, content: "submarine"}
 	let(:cell3) 					{double :cell3, check_for_hit!: :nil, content: "submarine"}
 	let(:cell4) 					{double :cell4, check_for_hit!: :nil, content: "submarine"}
@@ -114,6 +115,8 @@ describe Grid do
 			grid.deploy(ship2, 5, 6, "vertical")
 			expect(grid.all_boats_sunken?).to eq false
 		end
+
+
 
 		# xit 'will not let a user place a boat if it will go off the board' do
 		# 	deployment_grid.deploy(submarine, 1, 9, "horizontal")
