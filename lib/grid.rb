@@ -5,9 +5,12 @@ class Grid
 
 	include Wrapper
 
+	attr_accessor :boats
+
 	def initialize
 		@grid= Array.new(10){Array.new(10)}
 		@grid.map!{|internal_array|internal_array.map!{|cell| cell=Cell.new }}
+		@boats=[]
 	end
 
 	def grid
@@ -24,6 +27,7 @@ class Grid
 				place_boat(row, column, boat)
 				orientation == "horizontal" ? column = column.next : row = row.next
 			end
+			@boats << boat
 	end
 
 
@@ -36,12 +40,14 @@ class Grid
 		raise "That square is off the grid" if row > 9 || col > 9
 	end
 
-	def boats
-		boats = grid.flatten.select{|boat| boat.content.respond_to?(:sunk?)}
+	def all_boats_sunken?
+		boats.all? {|boat| boat.sunk? }
 	end
 
-	def all_boats_sunken?
-		boats.all? {|boat| boat.content.sunk? }
+	def print_sunk_boats
+		@boats.each do |boat| 
+		 puts "you have sunk a #{boat.class}" if boat.sunk?
+		end
 	end
 
 

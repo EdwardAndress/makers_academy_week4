@@ -31,6 +31,7 @@ describe 'Ship' do
 		expect(submarine).to be_sunk
 	end
 
+	
 
 	
 	context 'Subclasses' do
