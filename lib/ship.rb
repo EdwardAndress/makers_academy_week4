@@ -1,5 +1,6 @@
-class Ship
 
+class Ship
+q
 	attr_accessor :size
 	 
 	def initialize(size = nil)
