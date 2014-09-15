@@ -6,8 +6,7 @@ describe 'Player' do
 	let(:grid) { double :grid   }
 	
 
-	it 'is initialize with 5 ship' do
-		#expect(player.container.map(&:class)).to eq [Submarine, Aircraft_carrier, Cruiser, Battleship, Destroyer]
+	it 'is initialized with 5 ship' do
 		player.fleet.each do |item|
 			expect(item).to be_a Ship
 		end

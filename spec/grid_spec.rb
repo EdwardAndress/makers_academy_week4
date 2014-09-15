@@ -11,7 +11,6 @@ describe Grid do
 	let(:cell3) 					{double :cell3, check_for_hit!: :nil, content: "submarine"}
 	let(:cell4) 					{double :cell4, check_for_hit!: :nil, content: "submarine"}
 	let(:sub)             {double :sub, sunk?: true, size: 2, class: "Submarine"}
-	#let(:game)           { Game.new }
 	let(:submarine)       {double :submarine, size: 3}
 	
 	context 'create grid' do
@@ -123,21 +122,13 @@ describe Grid do
 			eddys_grid.print_sunk_boats
 		end
 
-		xit 'creates an array of unique boats' do
-			number_of_boats = eddys_grid.boats.length
-			expect(number_of_boats).to eq 2
-		end
-
 		it 'put the deployed boat into an array' do
 			eddys_grid.deploy(sub,1,1, "horizontal")
 			expect(eddys_grid.boats).to include(sub)
 		end
 
-		# xit 'will not let a user place a boat if it will go off the board' do
-		# 	deployment_grid.deploy(submarine, 1, 9, "horizontal")
-		# 	deployment_grid.grid[1][1]=cell2
-		# 	expect{deployment_grid.deploy(submarine, 1, 1, "horizontal")}.to raise_error(RuntimeError)
-		# 	expect(cell2).not_to receive(:content=)
-		# end
+		it 'will not let a user place a boat if it will go off the board' do
+			expect{deployment_grid.place_boat(1, 10, submarine)}.to raise_error(RuntimeError)
+		end
 
 end
