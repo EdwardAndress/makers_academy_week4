@@ -1,55 +1,48 @@
 Battleships
 ===========
 
-This was a week 4 group project at Makers Academy. The project was to implement a two-player game of Battleships in the Terminal, using Ruby and RSpec.
+This was a week 4 group project at Makers Academy to implement a two-player game of Battleships in the Terminal.
 
-##Notes
-========
+###Specification
 
-Each player has a grid of 10x10
++ Each player has a grid of 10x10
++ Each player has 5 ships of various lengths
++ Each player puts the ships on their grid.
++ Each player takes it in turns to guess if a square on their opponents grid is occupied.
++ The player can see where he palced the shot on his opponents grid and, if it struck a ship, the type of ship it was.
++ The first player to sink all of his opponents ships wins.
 
-Each player has 5 ships of various lengths
+###Technologies used
 
-Each player puts the ships on their grid.
++ Ruby
++ RSPEC
++ Git
 
-Each player takes it in turns to guess if a square on their opponents grid is occupied.
+###How to set it up
 
-The player can see where he palced the shot on his opponents grid and, if it struck a ship, the type of ship it was.
+```sh
+git clone https://github.com/aitkenster/Battleships.git
+```
 
-The first player to sink all of his opponents ships wins.
+###How to run it
 
-###Player
-======
+```sh
+cd Battleships
+irb
+require './lib/game_engine.rb'
+Game.new.play
 
-Responsiblity				Collaborators
+```
 
-Place the ships				Grid and ships
-Shoot
-Takes turns
+###How to test it
 
-###Grid
-====
+```sh
+cd Battleships
+rspec
+``` 
 
-Responsibility				Collaborators
+###Future Improvements
 
-Show the shots				Player and ships
-Can hold ships				Ships
-Know when game ends
-Knows ship locations	Ships
-
-###Ships
-=====
-
-Responsibility				Collaborators
-
-Can be shot 					Player
-Knows when hit				Grid
-Knows when sunk				Grid
-
-###Water
-=====
-
-Responsilbility				Collaborators
-
-Knows when hit				Grid
++ Change error handling so the game will continue if you try to place a boat or take a shot off the grid, rather than raising an error
++ Refactor the RSPEC tests. Some of them are more integration than functional.
 
