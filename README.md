@@ -1,6 +1,11 @@
 Battleships
 ===========
 
+This was a week 4 group project at Makers Academy. The project was to implement a two-player game of Battleships in the Terminal, using Ruby and RSpec.
+
+##Notes
+========
+
 Each player has a grid of 10x10
 
 Each player has 5 ships of various lengths
