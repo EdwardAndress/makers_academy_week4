@@ -17,3 +17,7 @@
  * Communication skills
  * Project planning and management
  * Resolving merge conflicts
+
+####Technologies used:
+ * RSpec
+ * Ruby
