@@ -21,3 +21,24 @@
 ####Technologies used:
  * RSpec
  * Ruby
+ * Git
+
+####Set it up:
+```sh
+$ git clone https://github.com/EdwardAndress/makers_academy_week4.git
+```
+
+####Test it:
+```sh
+$ cd makers_academy_week4
+$ rspec
+```
+
+####Run it:
+```sh
+$ cd makers_academy_week4/lib
+$ irb
+$ require './game_engine'
+$ game = Game.new
+$ game.play
+```
