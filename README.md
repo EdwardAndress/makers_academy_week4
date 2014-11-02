@@ -1,4 +1,4 @@
-###Makers Academy Week 4: Battleships in the Terminal
+###[Makers Academy] Week 4: Battleships in the Terminal
 -----------------------------------------
 
 ####Specification:
@@ -42,3 +42,4 @@ $ require './game_engine'
 $ game = Game.new
 $ game.play
 ```
+[Makers Academy]: http://makersacademy.com
